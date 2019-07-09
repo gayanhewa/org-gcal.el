@@ -388,6 +388,7 @@ It returns the code provided by the service."
            ("redirect_uri" .  "urn:ietf:wg:oauth:2.0:oob")
            ("grant_type" . "authorization_code"))
    :parser 'org-gcal--json-read
+   :encoding 'utf-8
    :success (cl-function
              (lambda (&key data &allow-other-keys)
                (when data
@@ -707,6 +708,7 @@ TO.  Instead an empty string is returned."
                ("grant_type" . "authorization_code"))
 
      :parser 'org-gcal--json-read
+     :encoding 'utf-8
      :error (cl-function
              (lambda (&key response &allow-other-keys)
                (let ((status (request-response-status-code response))
@@ -743,6 +745,7 @@ TO.  Instead an empty string is returned."
      :params `(("access_token" . ,a-token)
                ("key" . ,org-gcal-client-secret)
                ("grant_type" . "authorization_code"))
+     :encoding 'utf-8
      :error (cl-function
              (lambda (&key response &allow-other-keys)
                (let ((status (request-response-status-code response))
